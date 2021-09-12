@@ -2,13 +2,30 @@
 <html lang="en" dir="ltr">
     <head>
         <title>Galeryst iframe demo</title>
+        <script type="text/javascript">
+
+            window.addEventListener("message", (e)=>{
+                if (e.data){
+                    const message = e.data.message;
+                    const id      = e.data.id;
+
+                    const messageDiv = document.getElementById("message");
+                    
+                    if (messageDiv){
+                        messageDiv.innerText = `🚪 ${message} message from exhibitor: ${id}`;
+                    }
+                }
+            });
+
+        </script>
     </head>
     <body>
         <header>
             <h1>Galeryst iframe demo</h1>
         </header>
         <main>
-            <iframe width="560" height="315" title="Galeryst Gallery Exhibitor" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen src="https://galeryst.com/gallery/ad9d96ce-03b5-45bc-911d-8f203a7086c8/view"></iframe>
+            <iframe id="exhibitor" width="560" height="315" title="Galeryst Gallery Exhibitor" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen src="https://galeryst.com/gallery/ad9d96ce-03b5-45bc-911d-8f203a7086c8/view"></iframe>
+            <div id="message"></div>
         </main>
     </body>
 </html>

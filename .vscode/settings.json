@@ -1,4 +1,8 @@
 {
     "appService.defaultWebAppToDeploy": "/subscriptions/f159052e-5419-4e31-8a1d-78efeb8f02f8/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/galeryst-iframe",
-    "appService.deploySubpath": "iframe"
+    "appService.deploySubpath": "iframe",
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ]
 }
