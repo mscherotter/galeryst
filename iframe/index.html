@@ -6,13 +6,20 @@
 
             window.addEventListener("message", (e)=>{
                 if (e.data){
-                    const message = e.data.message;
-                    const id      = e.data.id;
+                    try{
+                        const package = JSON.parse(e.data);
 
-                    const messageDiv = document.getElementById("message");
-                    
-                    if (messageDiv){
-                        messageDiv.innerText = `🚪 ${message} message from exhibitor: ${id}`;
+                        const message = package.message;
+                        
+                        const id      = package.id;
+
+                        const messageDiv = document.getElementById("message");
+                        
+                        if (messageDiv){
+                            messageDiv.innerText = `🚪 ${message} message from exhibitor: ${id}`;
+                        }
+                    } catch(error){
+                        console.error(`Error catching message: ${error}`);
                     }
                 }
             });
